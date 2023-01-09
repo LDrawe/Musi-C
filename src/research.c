@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <windows.h>
 #include "lib/utils.c"
 
@@ -54,12 +55,11 @@ int pickSongs(int* vet) {
 }
 
 int getPersonData() {
-    char sex = getSex();
-    char nome[15];
-    char sobrenome[15];
+    char nome[30];
 
     printf("Digite seu nome e sobrenome: ");
-    scanf("%s %s", nome, sobrenome);
+    gets(nome);
+    char sex = getSex();
 
     int age = getAge();
     int choices[5] = {0};
@@ -73,15 +73,16 @@ int getPersonData() {
     }
 
     // Escreve os dados que o usuário informou no arquivo
-    fputc(sex, pesq); 
+    fputc(sex, pesq);
     fprintf(pesq, "\t%d\t", age);
     fputs(nome, pesq);
-    fputc('\t', pesq);
-    fputs(sobrenome, pesq);
     
-    for (int i = 0; i < 5; i++) fprintf(pesq, "\t%d", choices[i]);
+    for (int i = 0; i < 5; i++)
+        fprintf(pesq, "\t%d", choices[i]);
 
+    fputc('\n', pesq);
     fclose(pesq);
+
     return 0;
 }
 

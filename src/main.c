@@ -1,14 +1,32 @@
 #include <stdio.h>
+#include <string.h>
 #include <windows.h>
+
+typedef struct person {
+    char sex;
+    unsigned short int age;
+    char name[30];
+    int choices[5];
+} person;
 
 int countLines(FILE* arq) {
     int c;    
     int count = 0;
 
-     while ((c = getc(arq)) != EOF) 
+     while ((c = getc(arq)) != EOF)
         if (c == '\n')
             count++;
     return count + 1;
+}
+
+void printPerson(person p) {
+    printf("%c\n", p.sex);
+    printf("%d\n", p.age);
+    printf("%s\n", p.name);
+
+    for (int j = 0; j < 5; j++) {
+        printf("%d\n", p.choices[j]);
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -27,9 +45,24 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    printf("Quantidade de linhas de música: %d\n", countLines(songs));
-    printf("Quantidade de linhas de pesquisa: %d\n", countLines(research));
+    unsigned int lineCount = countLines(fopen("../config/pesq.txt", "r"));
+    person pessoas[lineCount];
+    char line[50];
 
+    if (!fgets(line, 70, research)) {
+        printf("Deu NULL a linha\n");
+    }
+
+    for (int i = 0; i < lineCount; i++) {
+        strtok(line, "\t");
+        pessoas[i].sex = line[0];
+        pessoas[i].age = atoi(strtok(NULL, "\t"));
+        strcpy(pessoas[i].name, strtok(NULL, "\t"));
+        for (int j = 0; j < 5; j++) {
+            pessoas[i].choices[j] = atoi(strtok(NULL, "\t"));
+        }
+    }
+    
     fclose(songs);
     fclose(research);
     system("pause");

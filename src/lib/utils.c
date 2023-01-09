@@ -10,7 +10,7 @@ int isDuplicate(int* vet, int choice) {
 }
 
 int getAge() {
-    unsigned int age = 0;
+    unsigned short int age = 0;
     while (age < 13) {
         printf("Digite sua idade (Apenas maiores de 13): ");
         scanf("%d", &age);

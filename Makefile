@@ -11,7 +11,7 @@ BIN = ./src/bin
 # 	$(CC) -c -o $@ $< $(CFLAGS)
 
 main: src/main.c
-	$(CC) -o $(BIN)/MusiC src/main.c
+	$(CC) -o $(BIN)/MusiC src/main.c $(CFLAGS)
 
 research: src/research.c
 	$(CC) src/research.c $(CFLAGS) -o $(BIN)/research
