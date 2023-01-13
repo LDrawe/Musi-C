@@ -1,6 +1,6 @@
 IDIR = ./include
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -Isrc/include
 CPPFLAGS = -Iinclude -MMD -MP
 SRC = $(wildcard src/*.c)
 DEPS = $(IDIR)/utils.h
