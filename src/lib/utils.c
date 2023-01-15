@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include "types.h"
 
 int isDuplicate(int* vet, int choice) {
 	for (int i = 0; i < 5; i++)
@@ -10,10 +11,10 @@ int isDuplicate(int* vet, int choice) {
 }
 
 int countLines(FILE* arq) {
-	char line[70];
+	char line[50];
 	int count = 0;
 
-	 while (fgets(line, 69, arq))
+	 while (fgets(line, 49, arq))
 		if (strcmp(line, "") || strcmp(line, "\n"))
 			count++;
 	return count;

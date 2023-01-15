@@ -4,6 +4,7 @@
         "windows.h": "c",
         "stdio.h": "c",
         "person.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "types.h": "c"
     },
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "person.h"
+#include "types.h"
 
 void shellsortChoices(person* pessoas, int ARRAY_SIZE) {
 	for (int n = 0; n < ARRAY_SIZE; n++) {
@@ -44,18 +44,18 @@ void shellsortPerson(person* pessoas, int ARRAY_SIZE) {
 			pessoas[j] = temp;
 		}
 	}
-	sortSex(pessoas, ARRAY_SIZE);
+	sortSex(pessoas, ARRAY_SIZE); //Como as idades de caada pessoa já está organizada, basta juntar quem for do mesmo sexo em cada parte
 }
 
-void shellsort(int* vet, int ARRAY_SIZE) {
+void shellsortPopSongs(songData* songs, int ARRAY_SIZE) {
 	for (int interval = ARRAY_SIZE / 2; interval > 0; interval /= 2) {
 		for (int i = interval; i < ARRAY_SIZE; i++) {
-			int temp = vet[i];
+			songData temp = songs[i];
 			int j;
-			for (j = i; j >= interval && vet[j - interval] < temp; j -= interval) {
-				vet[j] = vet[j - interval];
+			for (j = i; j >= interval && songs[j - interval].votes < temp.votes; j -= interval) {
+				songs[j] = songs[j - interval];
 			}
-			vet[j] = temp;
+			songs[j] = temp;
 		}
 	}
 }

@@ -10,6 +10,10 @@ BIN = ./src/bin
 # %.o: %.c $(DEPS)
 # 	$(CC) -c -o $@ $< $(CFLAGS)
 
+all: src/main.c src/research.c
+	$(CC) -o $(BIN)/MusiC src/main.c $(CFLAGS)
+	$(CC) src/research.c $(CFLAGS) -o $(BIN)/research
+
 main: src/main.c
 	$(CC) -o $(BIN)/MusiC src/main.c $(CFLAGS)
 
