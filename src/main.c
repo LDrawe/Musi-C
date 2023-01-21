@@ -30,9 +30,72 @@ void printMostPopSongs(songData* musics) {
 		char line[MAX_LENGTH];
 		if (musics[i].votes == 0)
 			continue;
-		strcpy(line, getNthFileLine(fopen("../config/songs.txt", "r"), musics[i].index + 1));
+		strcpy(line, getNthFileLine(fopen("../config/songs.txt", "r"), musics[i].index));
 		printf("%d° lugar - %d votos: %s", place, musics[i].votes, line);
 		place++;
+	}
+}
+
+void printWinners(songData* musics, person* pessoas, int ARRAY_SIZE) {
+	int i = 0, numberofwinners = 0;
+	
+	printf("Participantes que mencionaram as top 3 em primeiro lugar\n");
+	printf("Homens menores que 20 anos:\n");
+	
+	for (; i < ARRAY_SIZE && pessoas[i].sex == 'H' && pessoas[i].age <= 20; i++) {
+		if (pessoas[i].choices[0] != musics[0].index && pessoas[i].choices[0] != musics[1].index && pessoas[i].choices[0] != musics[2].index)
+			continue;
+		printf("\t%s\n", pessoas[i].name);
+		numberofwinners++;
+	}
+
+	if (numberofwinners == 0) {
+		printf("\tNenhum vencedor nessa categoria\n");
+	}
+
+	numberofwinners = 0;
+
+	printf("Homens maiores que 20 anos:\n");
+	
+	for (; i < ARRAY_SIZE && pessoas[i].sex == 'H' && pessoas[i].age > 20; i++) {
+		if (pessoas[i].choices[0] != musics[0].index && pessoas[i].choices[0] != musics[1].index && pessoas[i].choices[0] != musics[2].index)
+			continue;
+		printf("\t%s\n", pessoas[i].name);
+		numberofwinners++;
+	}
+	
+	if (numberofwinners == 0) {
+		printf("\tNenhum vencedor nessa categoria\n");
+	}
+
+	numberofwinners = 0;
+
+	printf("Mulheres menores que 20 anos:\n");
+	
+	for (; i < ARRAY_SIZE && pessoas[i].sex == 'M' && pessoas[i].age <= 20; i++) {
+		if (pessoas[i].choices[0] != musics[0].index && pessoas[i].choices[0] != musics[1].index && pessoas[i].choices[0] != musics[2].index)
+			continue;
+		printf("\t%s\n", pessoas[i].name);
+		numberofwinners++;
+	}
+	
+	if (numberofwinners == 0) {
+		printf("\tNenhuma vencedora nessa categoria\n");
+	}
+
+	numberofwinners = 0;
+
+	printf("Mulheres maiores que 20 anos:\n");
+	
+	for (; i < ARRAY_SIZE && pessoas[i].sex == 'M' && pessoas[i].age > 20; i++) {
+		if (pessoas[i].choices[0] != musics[0].index && pessoas[i].choices[0] != musics[1].index && pessoas[i].choices[0] != musics[2].index)
+			continue;
+		printf("\t%s\n", pessoas[i].name);
+		numberofwinners++;
+	}
+	
+	if (numberofwinners == 0) {
+		printf("\tNenhuma vencedora nessa categoria\n");
 	}
 }
 
@@ -76,12 +139,13 @@ int main(int argc, char *argv[]) {
 	songData voteCount[SONG_AMOUNT]; // Array que vai armazenar a quantidade de votos de cada música
 	
 	for (int i = 0; i < SONG_AMOUNT; i++) {
-		voteCount[i].index = i;
+		voteCount[i].index = i + 1;
 		voteCount[i].votes = 0;
 	}
 	
 	mostPopularSongs(pessoas, voteCount, peopleCount);
 	printMostPopSongs(voteCount);
+	printWinners(voteCount, pessoas, peopleCount);
 	
 	fclose(songs);
 	system("pause"); // Caso o programa seja executado fora de um terminal, a janela iria fechar automaticamente, impedindo de ver os dados

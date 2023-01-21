@@ -3,8 +3,6 @@
 
 #include "types.h"
 
-void shellsortChoices(person* pessoas, int ARRAY_SIZE);
-
 void sortSex(person* pessoas, int ARRAY_SIZE);
 
 void shellsortPerson(person* pessoas, int ARRAY_SIZE);

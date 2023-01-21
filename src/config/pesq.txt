@@ -1,6 +1,6 @@
 H	23	Cruz Evangelista	1	27	26	25	24
-M	24	Bailey Leslie	1	28	26	7	8
-H	22	Carmo Salvador	2	18	14	3	4
+M	24	Bailey Leslie	7	28	26	1	8
+H	22	Carmo Salvador	8	18	14	3	4
 M	25	Lindsay Robbie	1	28	26	7	8
 H	21	Saul Goodman	1	28	26	7	8
 H	18	Francis Wilkie	3	19	26	7	8
@@ -11,7 +11,7 @@ M	23	Darby Norris	1	28	26	7	8
 H	15	Joss Haze	1	28	26	7	8
 M	22	Cat McKenzie	1	28	26	7	8
 H	19	Nicky Moore	2	28	26	7	8
-M	21	Fortune Martie	1	28	26	7	8
+M	21	Fortune Martie	26	28	20	7	8
 M	20	Dakota Ripley	1	28	26	7	8
 M	20	Judy Carlisle	5	6	16	7	8
 M	19	Merlyn Cat	1	28	26	7	8
